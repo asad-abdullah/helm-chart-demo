@@ -1,19 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "helm-chart-demo.fullname" . }}
-  namespace: {{ .Values.namespace }}
+  name: {{ include "demo-chart.fullname" . }}
   labels:
-    {{- include "helm-chart-demo.labels" . | nindent 4 }}
-  annotations:
-    reloader.stakater.com/auto: "true"
+    {{- include "demo-chart.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "helm-chart-demo.selectorLabels" . | nindent 6 }}
+      {{- include "demo-chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -21,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "helm-chart-demo.selectorLabels" . | nindent 8 }}
+        {{- include "demo-chart.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "helm-chart-demo.serviceAccountName" . }}
+      serviceAccountName: {{ include "demo-chart.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
