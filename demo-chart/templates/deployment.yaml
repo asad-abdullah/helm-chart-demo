@@ -4,6 +4,11 @@ metadata:
   name: {{ include "demo-chart.fullname" . }}
   labels:
     {{- include "demo-chart.labels" . | nindent 4 }}
+  {{- with .Values.annotations }}
+  annotations:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  namespace: {{ .Values.namespace }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}

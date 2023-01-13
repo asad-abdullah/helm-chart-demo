@@ -13,6 +13,9 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+namespace: ""
+annotations:
+  reloader.stakater.com/auto: "true"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -75,7 +78,8 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-nodeSelector: {}
+nodeSelector:
+  role: stateless-applications
 
 tolerations: []
 
