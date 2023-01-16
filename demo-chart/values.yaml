@@ -5,6 +5,7 @@
 replicaCount: 1
 
 config:
+  enabled: true
   PROFILE: abc
 
 image:
