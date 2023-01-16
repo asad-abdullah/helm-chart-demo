@@ -21,7 +21,7 @@ env:
     valueFrom:
       configMapKeyRef:
         key: PROFILE
-        name: demo-app-config
+        name: demo-app
 
 imagePullSecrets: []
 nameOverride: ""
