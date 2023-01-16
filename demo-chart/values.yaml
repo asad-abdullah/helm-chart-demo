@@ -4,11 +4,23 @@
 
 replicaCount: 1
 
+config:
+  PROFILE: abc
+
 image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
+
+env:
+  - name: JDK_JAVA_OPTIONS
+    value: -XX:MaxHeapSize=256m -XX:MaxMetaspaceSize=100m -XX:MetaspaceReclaimPolicy=aggressive
+  - name: PROFILE
+    valueFrom:
+      configMapKeyRef:
+        key: PROFILE
+        name: demo-app-config
 
 imagePullSecrets: []
 nameOverride: ""
