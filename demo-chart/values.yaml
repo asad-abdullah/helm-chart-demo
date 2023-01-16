@@ -4,9 +4,10 @@
 
 replicaCount: 1
 
-config:
+configMap:
   enabled: true
-  PROFILE: abc
+  config:
+    PROFILE: abc
 
 image:
   repository: nginx

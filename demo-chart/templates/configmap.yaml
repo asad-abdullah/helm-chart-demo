@@ -1,12 +1,12 @@
-{{- if .Values.config.enabled }}
+{{- if .Values.configMap.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "demo-chart.fullname" . }}
   labels:
     {{- include "demo-chart.labels" . | nindent 4 }}
-{{- with .Values.config }}
+{{- with .Values.configMap.config }}
 data:
-  {{- toYaml . | nindent 4 }}
+  {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end }}
