@@ -20,6 +20,8 @@ env:
     value: -XX:MaxHeapSize=256m -XX:MaxMetaspaceSize=100m -XX:MetaspaceReclaimPolicy=aggressive
   - name: DEF
     value: HIJ
+  - name: KLM
+    value: NOP
   - name: PROFILE
     valueFrom:
       configMapKeyRef:
