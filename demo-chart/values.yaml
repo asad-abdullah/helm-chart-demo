@@ -16,6 +16,7 @@ fullnameOverride: ""
 namespace: ""
 annotations:
   reloader.stakater.com/auto: "true"
+  app: demo-app
 
 serviceAccount:
   # Specifies whether a service account should be created
