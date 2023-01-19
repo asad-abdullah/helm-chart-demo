@@ -17,6 +17,8 @@ env:
     value: HIJ
   - name: KLM
     value: NOP
+  - name: QRS
+    value: TUV
   - name: PROFILE
     valueFrom:
       configMapKeyRef:
