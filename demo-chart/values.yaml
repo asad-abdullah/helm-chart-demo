@@ -4,11 +4,6 @@
 
 replicaCount: 1
 
-configMap:
-  enabled: true
-  config:
-    PROFILE: abc
-
 image:
   repository: nginx
   pullPolicy: IfNotPresent
@@ -27,6 +22,16 @@ env:
       configMapKeyRef:
         key: PROFILE
         name: demo-app
+  - name: apigate.db.username
+    valueFrom:
+      secretKeyRef:
+        name: demo-app
+        key: apigate.db.username
+  - name: apigate.db.password
+    valueFrom:
+      secretKeyRef:
+        name: demo-app
+        key: apigate.db.password
 
 imagePullSecrets: []
 nameOverride: ""
@@ -60,6 +65,19 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+
+configMap:
+  enabled: true
+  config:
+    PROFILE: abc
+
+secret:
+  enabled: true
+  annotations:
+    avp.kubernetes.io/path: "dcore/data/applications/customer-info-service"
+  data:
+    apigate.db.username: <apigate.db.username>
+    apigate.db.password: <apigate.db.password>
 
 service:
   type: ClusterIP
