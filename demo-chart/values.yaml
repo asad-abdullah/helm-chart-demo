@@ -13,6 +13,8 @@ image:
 env:
   - name: JDK_JAVA_OPTIONS
     value: -XX:MaxHeapSize=256m -XX:MaxMetaspaceSize=100m -XX:MetaspaceReclaimPolicy=aggressive
+  - name: CCC_VER
+    value: ga123
   - name: DEF
     value: HIJ
   - name: KLM
