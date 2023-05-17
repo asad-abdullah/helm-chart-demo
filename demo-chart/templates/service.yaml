@@ -4,6 +4,7 @@ metadata:
   name: {{ include "demo-chart.fullname" . }}
   labels:
     {{- include "demo-chart.labels" . | nindent 4 }}
+  namespace: {{ .Values.namespace.name }}
 spec:
   type: {{ .Values.service.type }}
   ports:

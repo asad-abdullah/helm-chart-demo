@@ -5,6 +5,7 @@ metadata:
   name: {{ include "demo-chart.fullname" . }}
   labels:
     {{- include "demo-chart.labels" . | nindent 4 }}
+  namespace: {{ .Values.namespace.name }}
 {{- with .Values.configMap.config }}
 data:
   {{- toYaml . | nindent 2 }}
