@@ -75,8 +75,6 @@ configMap:
   config:
     PROFILE: abc
     boolean: "true"
-    line3: "3"
-    line4: "4"
 
 secret:
   enabled: true
