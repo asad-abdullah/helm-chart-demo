@@ -13,6 +13,11 @@ service:
   type: ClusterIP
   port: 80
 
+configMap:
+  enabled: true
+  config:
+    env: stage
+
 ingress:
   enabled: false
   annotations: {}
