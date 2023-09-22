@@ -77,6 +77,7 @@ configMap:
     boolean: "true"
     line3: "3"
     line4: "4"
+    line5: "5"
 
 secret:
   enabled: true
@@ -85,6 +86,7 @@ secret:
   data:
     apigate.db.username: <apigate.db.username>
     apigate.db.password: <apigate.db.password>
+    apigate.db.dbname: <db.name>
 
 service:
   type: ClusterIP
