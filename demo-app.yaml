@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-app
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: demo-app
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://asad-abdullah.github.io/helm-chart-demo/charts/
+      chart: demo-chart
+      targetRevision: 0.0.5
+      helm:
+        valueFiles:
+          - $valuesRepo/demo-chart/values.yaml
+    - repoURL: https://github.com/asad-abdullah/helm-chart-demo.git
+      targetRevision: master
+      ref: valuesRepo
